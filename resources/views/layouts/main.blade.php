@@ -66,7 +66,6 @@
 
         showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
-        /*===== LINK ACTIVE =====*/
         const linkColor = document.querySelectorAll('.nav_link')
 
         function colorLink() {
@@ -78,7 +77,6 @@
 
         linkColor.forEach(l => l.addEventListener('click', colorLink))
 
-        // Your code to run since DOM is loaded and ready
     });
 </script>
 </body>

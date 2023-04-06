@@ -1,19 +1,19 @@
 {
     "categories":[
         {
-            "name": "Monitor"
+            "name": "Бизнес-литература"
         },
         {
-            "name": "Printer"
+            "name": "Компьютерная литература"
         },
         {
-            "name": "Mouse"
+            "name": "Психология"
         },
         {
-            "name": "Ink"
+            "name": "История"
         },
         {
-            "name": "Laptop"
+            "name": "Научная литература"
         }
     ]
 }

@@ -9,17 +9,26 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $categories = Category::all();
         return view('pages.category.index', compact('categories'));
     }
 
     public function showAdd()
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         return view('pages.category.add');
     }
 
     public function store(Request $request)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $request->validate([
             'name' => 'required',
         ]);
@@ -33,6 +42,9 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $category = Category::find($id)->delete();
 
         return redirect()->route('category')->with(['message' => 'Category deleted', 'alert' => 'alert-danger']);
@@ -40,6 +52,9 @@ class CategoryController extends Controller
 
     public function showEdit($id)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $category = Category::find($id);
 
         return view('pages.category.edit', compact('category'));
@@ -47,6 +62,9 @@ class CategoryController extends Controller
 
     public function update($id, Request $request)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $category = Category::find($id);
 
         $request->validate([

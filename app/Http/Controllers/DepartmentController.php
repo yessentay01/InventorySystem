@@ -9,17 +9,26 @@ class DepartmentController extends Controller
 {
     public function index()
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $departments = Department::orderBy('location', 'ASC')->get();
         return view('pages.department.index', compact('departments'));
     }
 
     public function showAdd()
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         return view('pages.department.add');
     }
 
     public function store(Request $request)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $request->validate([
             'name' => 'required',
             'location' => 'required',
@@ -35,6 +44,9 @@ class DepartmentController extends Controller
 
     public function destroy($id)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $department = Department::find($id)->delete();
 
         return redirect()->route('department')->with(['message' => 'Department deleted', 'alert' => 'alert-danger']);
@@ -42,6 +54,9 @@ class DepartmentController extends Controller
 
     public function showEdit($id)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $department = Department::find($id);
 
         return view('pages.department.edit', compact('department'));
@@ -49,6 +64,9 @@ class DepartmentController extends Controller
 
     public function update($id, Request $request)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $department = Department::find($id);
 
         $request->validate([

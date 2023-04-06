@@ -18,6 +18,10 @@ class Item extends Model
         'name',
         'serial_number',
         'status',
+        'description',
+        'author',
+        'price',
+        'image',
         'category_id',
         'supplier_id',
     ];

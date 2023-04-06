@@ -18,13 +18,7 @@
 
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <select class="form-select" name="location" required>
-                        @for ($i = 1; $i < 7; $i++)
-                            <option value="{{ $i }}" {{ $i==$department->location ? 'selected' : ''
-                        }}>Level {{ $i }}
-                            </option>
-                        @endfor
-                    </select>
+                    <input type="text" id="location" class="form-control" name="location" value="{{$department->location}}" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>

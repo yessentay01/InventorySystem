@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SignoutController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\CatalogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +30,13 @@ Route::post('/', [LoginController::class, 'login'])->name('index.login');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.store');
 
+
+
 Route::middleware('auth')->group(function () {
 
     Route::get('/signout', [SignoutController::class, 'signOut'])->name('logout');
+
+    Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

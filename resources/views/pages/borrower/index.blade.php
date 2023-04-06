@@ -18,8 +18,8 @@
                 <th data-sortable="true" scope="col">Borrower Name</th>
                 <th data-sortable="true" scope="col">Status</th>
                 <th data-sortable="true" scope="col">Borrow Date</th>
-                <th data-sortable="true" scope="col">Staff Id</th>
-                <th data-sortable="true" scope="col">Item</th>
+                <th data-sortable="true" scope="col">Student Id</th>
+                <th data-sortable="true" scope="col">Book</th>
                 <th data-sortable="true" scope="col">Department</th>
                 <th data-sortable="true" scope="col">Authorized By</th>
                 <th></th>
@@ -39,7 +39,7 @@
                         @endif
                     </td>
                     <td>{{ $borrower->created_at->format('d-M-Y') }}</td>
-                    <td>{{ $borrower->staff_id }}</td>
+                    <td>{{ $borrower->student_id }}</td>
                     <td>{{ $borrower->item->name }}</td>
                     <td>{{ $borrower->department->name }}</td>
                     <td>{{ $borrower->user->name }}</td>

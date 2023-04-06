@@ -17,6 +17,10 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('serial_number');
+            $table->text('description');
+            $table->string('author');
+            $table->string('price');
+            $table->string('image');
             $table->boolean('status');
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('supplier_id')->constrained()->cascadeOnDelete();

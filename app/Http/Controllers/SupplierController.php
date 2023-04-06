@@ -9,17 +9,26 @@ class SupplierController extends Controller
 {
     public function index()
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $suppliers = Supplier::all();
         return view('pages.supplier.index', compact('suppliers'));
     }
 
     public function showAdd()
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         return view('pages.supplier.add');
     }
 
     public function store(Request $request)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $request->validate([
             'name' => 'required',
             'incharge_name' => 'required',
@@ -37,6 +46,9 @@ class SupplierController extends Controller
 
     public function destroy($id)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $supplier = Supplier::find($id);
 
         $supplier->delete();
@@ -53,6 +65,9 @@ class SupplierController extends Controller
 
     public function update($id, Request $request)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $supplier =  Supplier::find($id);
 
         $request->validate([

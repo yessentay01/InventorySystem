@@ -19,16 +19,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
         $this->getDepartments();
         $this->getCategories();
-
-        \App\Models\User::factory(2)->create();
-        Supplier::factory(2)->create();
-        // Category::factory(3)->create();
-        Item::factory(3)->create();
-        // Department::factory(2)->create();
-        Borrower::factory(5)->create();
     }
 
     public function getCategories()

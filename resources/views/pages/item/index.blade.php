@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    @section('title', 'List of Items')
+    @section('title', 'List of Books')
 
     @include('inc.alert')
     <div class="container">

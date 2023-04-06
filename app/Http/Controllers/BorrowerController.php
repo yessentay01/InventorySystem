@@ -11,12 +11,18 @@ class BorrowerController extends Controller
 {
     public function index()
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $borrowers = Borrower::orderBy('status', 'DESC')->get();
         return view('pages.borrower.index', compact('borrowers'));
     }
 
     public function showAdd()
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $departments = Department::all();
         $items = Item::where('status', 1)->get();
         return view('pages.borrower.add', compact('departments', 'items'));
@@ -24,19 +30,22 @@ class BorrowerController extends Controller
 
     public function store(Request $request)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $request->validate([
             'name' => 'required',
-            'staff_id' => 'required',
+            'student_id' => 'required',
             'item_id' => 'required',
             'department_id' => 'required',
             'user_id' => 'required',
         ]);
 
         $this->changeItemStatus($request->item_id);
-
+      //  dd($request);
         Borrower::create([
             'name' => $request->name,
-            'staff_id' => $request->staff_id,
+            'student_id' => $request->student_id,
             'item_id' => $request->item_id,
             'department_id' => $request->department_id,
             'user_id' => $request->user_id,
@@ -48,6 +57,9 @@ class BorrowerController extends Controller
 
     public function destroy($id)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $borrower = Borrower::find($id)->delete();
 
         return redirect()->route('borrower')->with(['message' => 'Borrower deleted', 'alert' => 'alert-danger']);
@@ -55,6 +67,9 @@ class BorrowerController extends Controller
 
     public function showEdit($id)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $borrower = Borrower::find($id);
         $departments = Department::all();
         $items = Item::where('status', 1)->get();
@@ -64,6 +79,9 @@ class BorrowerController extends Controller
 
     public function update($id, Request $request)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $borrower = Borrower::find($id);
 
         $request->validate([
@@ -99,6 +117,9 @@ class BorrowerController extends Controller
 
     public function changeItemStatus($id)
     {
+        if (!auth()->user()->is_admin){
+            return redirect()->route('dashboard');
+        }
         $item = Item::find($id);
         if ($item->status == 0) {
             $item->status = 1;

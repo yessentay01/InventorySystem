@@ -22,10 +22,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="staff_id" class="form-label">Staff Id</label>
-                    <input type="text" name="staff_id" class="form-control" id="staff_id" required>
+                    <label for="student_id" class="form-label">Student ID</label>
+                    <input type="text" name="student_id" class="form-control" id="student_id" required>
 
-                    @error('staff_id')
+                    @error('student_id')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="item_id" class="form-label">Item</label>
+                    <label for="item_id" class="form-label">Book</label>
                     <select class="form-select" name="item_id" required>
                         @foreach ($items as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>

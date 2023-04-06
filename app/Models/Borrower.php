@@ -17,7 +17,7 @@ class Borrower extends Model
     protected $fillable = [
         'name',
         'status',
-        'staff_id',
+        'student_id',
         'item_id',
         'department_id',
         'user_id',

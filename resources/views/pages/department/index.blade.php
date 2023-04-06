@@ -26,7 +26,7 @@
                 <tr>
                     <th scope="row">{{ $department->id }}</th>
                     <td>{{ $department->name }}</td>
-                    <td>Level {{ $department->location }}</td>
+                    <td>{{ $department->location }}</td>
                     <td>
                         <a href="{{ route('department.destroy', ['id' => $department->id]) }}"
                            class="btn btn-danger">Delete</a>

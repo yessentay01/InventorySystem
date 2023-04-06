@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    @section('title', 'Edit Item')
+    @section('title', 'Edit Book')
 
     @include('inc.alert')
     <div class="container">
@@ -10,7 +10,7 @@
             <form action="{{ route('item.update', ['id' => request()->route('id')]) }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Item Name</label>
+                    <label for="name" class="form-label">Book Name</label>
                     <input type="text" name="name" class="form-control" id="name" value="{{ $item->name }}" required>
 
                     @error('name')
@@ -19,9 +19,52 @@
                 </span>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author</label>
+                    <input type="text" name="author" class="form-control" id="author" value="{{ $item->author }}" required>
+
+                    @error('author')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                    @enderror
+                </div>
 
                 <div class="mb-3">
-                    <label for="serial_number" class="form-label">Serial Number</label>
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" class="form-control" id="description" cols="30" rows="10" required>{{$item->description}}</textarea>
+                    @error('description')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" name="price" class="form-control" id="price" value="{{ $item->price }}" required>
+
+                    @error('price')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    {{--                    <input type="file"  name="image" class="form-control" id="image" required>--}}
+                    <input type="text" name="image" id="image" class="form-control" value="{{ $item->image }}" required>
+                    @error('image')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                    @enderror
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="serial_number" class="form-label">Book ID</label>
                     <input type="text" name="serial_number" class="form-control" id="serial_number"
                            value="{{ $item->serial_number }}" required>
 
