@@ -50,7 +50,7 @@ class BorrowerController extends Controller
             'user_id' => 'required',
         ]);
 
-        $this->changeItemStatus($request->item_id);
+//        $this->changeItemStatus($request->item_id);
       //  dd($request);
         Borrower::create([
             'name' => $request->name,
@@ -125,12 +125,6 @@ class BorrowerController extends Controller
             return redirect()->route('dashboard');
         }
         $item = Item::find($id);
-        if ($item->status == 0) {
-            $item->status = 1;
-        } else {
-            $item->status = 0;
-        }
-
         $item->save();
     }
 }

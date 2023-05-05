@@ -37,6 +37,10 @@ body {
   color: #0c0c0c;
   background-color: #ffffff;
   overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+html {
+    scroll-behavior: smooth;
 }
 
 .layout_padding {

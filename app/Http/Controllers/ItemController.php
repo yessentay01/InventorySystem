@@ -77,7 +77,7 @@ class ItemController extends Controller
         $item = Item::find($id);
         $item->delete();
 
-        return redirect()->route('item')->with(['message' => 'Item deleted', 'alert' => 'alert-success']);
+        return redirect()->route('item')->with(['message' => 'Book deleted', 'alert' => 'alert-success']);
     }
 
     public function showEdit($id)
@@ -114,6 +114,6 @@ class ItemController extends Controller
         $item->supplier_id = $request->supplier_id;
         $item->save();
 
-        return redirect()->route('item')->with(['message' => 'Item updated', 'alert' => 'alert-warning']);
+        return redirect()->route('item')->with(['message' => 'Book updated', 'alert' => 'alert-warning']);
     }
 }
