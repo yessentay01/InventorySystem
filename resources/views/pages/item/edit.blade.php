@@ -51,17 +51,6 @@
                     @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    {{--                    <input type="file"  name="image" class="form-control" id="image" required>--}}
-                    <input type="text" name="image" id="image" class="form-control" value="{{ $item->image }}" required>
-                    @error('image')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                    @enderror
-                </div>
-
 
                 <div class="mb-3">
                     <label for="serial_number" class="form-label">Book ID</label>

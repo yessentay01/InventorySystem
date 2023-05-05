@@ -7,19 +7,34 @@
         @csrf
         <div class="form-outline mb-4">
             <label class="form-label">Full name</label>
-            <input type="text" name="name" class="form-control form-control-lg"
+            <input type="text" name="name" value="{{ old('name') }}" class="form-control form-control-lg @error('name') is-invalid @enderror"
                    placeholder="Enter name" required/>
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+            @enderror
         </div>
         <div class="form-outline mb-4">
             <label class="form-label" >Email address</label>
-            <input type="email" name="email" class="form-control form-control-lg"
+            <input type="email" name="email" value="{{ old('email') }}" class="form-control form-control-lg @error('email') is-invalid @enderror"
                    placeholder="Enter email"required />
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+            @enderror
         </div>
 
         <div class="form-outline mb-3">
             <label class="form-label">Password</label>
-            <input type="password" name="password" class="form-control form-control-lg"
+            <input type="password" name="password" class="form-control form-control-lg @error('password') is-invalid @enderror "
                    placeholder="Enter password" required/>
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+            @enderror
         </div>
 
         <div class="text-center text-lg-start mt-4 pt-2">

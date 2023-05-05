@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Borrower;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Supplier;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -17,6 +19,13 @@ class ItemController extends Controller
         $items = Item::orderBy('status', 'DESC')->get();
         return view('pages.item.index', compact('items'));
     }
+
+    public function report(){
+        $items = Item::orderBy('status', 'DESC')->get();
+        $pdf = PDF::loadView('pages.item.report', compact('items'),);
+        return $pdf->stream('Report');
+    }
+
 
     public function showAdd()
     {
@@ -40,7 +49,11 @@ class ItemController extends Controller
             'category_id' => 'required',
             'supplier_id' => 'required',
         ]);
-        //dd($request);
+        if ($request->image) {
+            $photo_name = time() . "." . $request->image->getClientOriginalExtension();
+            $request->image->storeAs('media/books/', $photo_name, 'public');
+        }
+
         Item::create([
             'name' => $request->name,
             'serial_number' => $request->serial_number,
@@ -48,7 +61,7 @@ class ItemController extends Controller
             'description' => $request->description,
             'author' => $request->author,
             'price' => $request->price,
-            'image' => $request->image,
+            'image' => $photo_name,
             'category_id' => $request->category_id,
             'supplier_id' => $request->supplier_id
         ]);

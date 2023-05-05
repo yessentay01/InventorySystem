@@ -5,6 +5,7 @@
     @include('inc.alert')
     <div class="container">
         <a href="{{ route('borrower.showAdd') }}" class="btn btn-primary mt-3">Add New Borrower</a>
+        <a href="{{ route('borrower.report') }}" target="_blank" class="btn btn-primary mt-3">Download Report</a>
         <table
             id="table"
             data-show-columns="true"
@@ -21,7 +22,6 @@
                 <th data-sortable="true" scope="col">Student Id</th>
                 <th data-sortable="true" scope="col">Book</th>
                 <th data-sortable="true" scope="col">Department</th>
-                <th data-sortable="true" scope="col">Authorized By</th>
                 <th></th>
             </tr>
             </thead>
@@ -29,7 +29,7 @@
             @foreach ($borrowers as $borrower)
                 <tr>
                     <th scope="row">{{ $borrower->id }}</th>
-                    <td>{{ $borrower->name }}</td>
+                    <td>{{ $borrower->user->name }}</td>
                     <td>
                         @if ($borrower->status == 1)
                             <span class="bg-success btn text-white">Active</span>
@@ -42,7 +42,6 @@
                     <td>{{ $borrower->student_id }}</td>
                     <td>{{ $borrower->item->name }}</td>
                     <td>{{ $borrower->department->name }}</td>
-                    <td>{{ $borrower->user->name }}</td>
                     <td>
                         <a href="{{ route('borrower.destroy', ['id' => $borrower->id]) }}"
                            class="btn btn-danger">Delete</a>

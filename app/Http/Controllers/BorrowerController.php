@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Borrower;
 use App\Models\Department;
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class BorrowerController extends Controller
 {
     public function index()
@@ -15,7 +16,14 @@ class BorrowerController extends Controller
             return redirect()->route('dashboard');
         }
         $borrowers = Borrower::orderBy('status', 'DESC')->get();
-        return view('pages.borrower.index', compact('borrowers'));
+        $users = User::all();
+        return view('pages.borrower.index', compact('borrowers', 'users'));
+    }
+
+    public function reports(){
+        $borrowers = Borrower::orderBy('status', 'DESC')->get();
+        $pdf = PDF::loadView('pages.borrower.report', compact('borrowers'),);
+        return $pdf->stream('Report');
     }
 
     public function showAdd()
@@ -23,9 +31,10 @@ class BorrowerController extends Controller
         if (!auth()->user()->is_admin){
             return redirect()->route('dashboard');
         }
+        $users = User::all();
         $departments = Department::all();
         $items = Item::where('status', 1)->get();
-        return view('pages.borrower.add', compact('departments', 'items'));
+        return view('pages.borrower.add', compact('departments', 'items', 'users'));
     }
 
     public function store(Request $request)
@@ -70,18 +79,16 @@ class BorrowerController extends Controller
         if (!auth()->user()->is_admin){
             return redirect()->route('dashboard');
         }
+        $users = User::all();
         $borrower = Borrower::find($id);
         $departments = Department::all();
         $items = Item::where('status', 1)->get();
 
-        return view('pages.borrower.edit', compact('borrower', 'departments', 'items'));
+        return view('pages.borrower.edit', compact('borrower', 'departments', 'items', 'users'));
     }
 
     public function update($id, Request $request)
     {
-        if (!auth()->user()->is_admin){
-            return redirect()->route('dashboard');
-        }
         $borrower = Borrower::find($id);
 
         $request->validate([
@@ -101,8 +108,6 @@ class BorrowerController extends Controller
         if ($request->status != $borrower->status) {
             $this->changeItemStatus($request->item_id);
         }
-
-
         $borrower->name = $request->name;
         $borrower->staff_id = $request->staff_id;
         $borrower->item_id = $request->item_id;
@@ -111,7 +116,6 @@ class BorrowerController extends Controller
         $borrower->status = $request->status;
 
         $borrower->save();
-
         return redirect()->route('borrower')->with(['message' => 'Borrower updated', 'alert' => 'alert-success']);
     }
 

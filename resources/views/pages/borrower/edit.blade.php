@@ -10,11 +10,19 @@
             <form action="{{ route('borrower.update', ['id'=>request()->route('id')]) }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Borrower Name</label>
-                    <input type="text" name="name" class="form-control" id="name" value="{{ $borrower->name }}"
-                           required>
+                    <label for="user_id"  class="form-label">Borrower Name</label>
+                    <select name="user_id" class="form-control" id="user_id">
+                        @foreach($users as $user)
+                            <option value="{{$user->id}}" {{ $user->id == $borrower->user_id ? 'selected' :
+                        ''}}>{{$user->name}}</option>
+                        @endforeach
+                    </select>
+                    <input  type="hidden" name="name" class="form-control" id="name" value="null" required>
 
-                    @error('name')
+                    {{--                    <input type="text" class="form-control" value="{{ Auth::user()->name }}" disabled>--}}
+                    {{--                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">--}}
+
+                    @error('user_id')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -88,17 +96,6 @@
                     @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label for="user_id" class="form-label">Authorized By</label>
-                    <input type="text" class="form-control" value="{{ $borrower->user->name }}" disabled>
-                    <input type="hidden" name="user_id" value="{{ $borrower->user_id }}">
-
-                    @error('user_id')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                    @enderror
-                </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

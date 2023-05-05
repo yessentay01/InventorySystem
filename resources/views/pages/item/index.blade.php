@@ -5,7 +5,8 @@
 
     @include('inc.alert')
     <div class="container">
-        <a href="{{ route('item.showAdd') }}" class="btn btn-primary mt-3">Add new item</a>
+        <a href="{{ route('item.showAdd') }}" class="btn btn-primary mt-3">Add new book</a>
+        <a href="{{ route('item.report') }}" target="_blank" class="btn btn-primary mt-3">Download Report</a>
         <table
             id="table"
             data-show-columns="true"

@@ -10,9 +10,13 @@
                 <i class='bx bx-grid-alt nav_icon'></i>
                 <span class="nav_name">Dashboard</span>
             </a>
-            <a href="{{ route('catalog') }}" class="nav_link {{Route::currentRouteName() == 'dashboard' ? 'active' : null  }}">
+            <a href="{{ route('catalog') }}" class="nav_link {{Route::currentRouteName() == 'catalog' ? 'active' : null  }}">
                 <i class='bx bx-bookmark nav_icon'></i>
                 <span class="nav_name">Catalog</span>
+            </a>
+            <a href="{{ route('favorites') }}" class="nav_link {{Route::currentRouteName() == 'favorites' ? 'active' : null  }}">
+                <i class='bx bx-folder nav_icon'></i>
+                <span class="nav_name">Favorites</span>
             </a>
             <a href="{{ route('profile') }}" class="nav_link {{Route::currentRouteName() == 'profile' ? 'active' : null  }}">
                 <i class='bx bx-user  nav_icon'></i>

@@ -7,7 +7,7 @@
     <div class="container">
         <a href="{{ route('item') }}" class="btn btn-secondary mt-3">Back</a>
         <div class="border border-secondary rounded mt-3 p-3">
-            <form action="{{ route('item.store') }}" method="POST">
+            <form action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="serial_number" class="form-label">Book ID</label>
@@ -66,7 +66,7 @@
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
 {{--                    <input type="file"  name="image" class="form-control" id="image" required>--}}
-                    <input type="text" name="image" id="image" class="form-control" required>
+                    <input type="file" name="image" id="image" class="form-control" required>
                     @error('image')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
