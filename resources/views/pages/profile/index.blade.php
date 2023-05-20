@@ -15,7 +15,10 @@
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" value="{{ $profile->email }}" disabled>
             </div>
-
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">University</label>
+                <input type="email" class="form-control" value="{{ $university->name }}" disabled>
+            </div>
         </div>
         <table
             id="table"

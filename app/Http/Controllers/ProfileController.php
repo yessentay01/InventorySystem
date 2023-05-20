@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Borrower;
+use App\Models\Universities;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,8 @@ class ProfileController extends Controller
     {
         $profile = Auth::user();
         $borrowers = Borrower::where('borrowers.user_id', '=', $profile->id)->orderBy('status', 'DESC')->get();
-        return view('pages.profile.index', compact('profile', 'borrowers'));
+        $university = Universities::find($profile->university_id);
+        return view('pages.profile.index', compact('profile', 'borrowers', 'university'));
     }
 
     public function showEdit()

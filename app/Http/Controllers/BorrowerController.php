@@ -33,7 +33,7 @@ class BorrowerController extends Controller
         }
         $users = User::all();
         $departments = Department::all();
-        $items = Item::where('status', 1)->get();
+        $items = Item::where('status', 1)->where('quantity', '>', 0)->get();
         return view('pages.borrower.add', compact('departments', 'items', 'users'));
     }
 
@@ -52,6 +52,9 @@ class BorrowerController extends Controller
 
 //        $this->changeItemStatus($request->item_id);
       //  dd($request);
+
+
+
         Borrower::create([
             'name' => $request->name,
             'student_id' => $request->student_id,
@@ -61,6 +64,9 @@ class BorrowerController extends Controller
             'status' => 1,
         ]);
 
+        $book = Item::find($request->item_id);
+        $book->quantity = $book->quantity - 1;
+        $book->save();
         return redirect()->route('borrower')->with(['message' => 'Borrower added', 'alert' => 'alert-success']);
     }
 
@@ -91,29 +97,20 @@ class BorrowerController extends Controller
     {
         $borrower = Borrower::find($id);
 
-        $request->validate([
-            'name' => 'required',
-            'staff_id' => 'required',
-            'item_id' => 'required',
-            'department_id' => 'required',
-            'user_id' => 'required',
-            'status' => 'required',
-        ]);
+        $book = Item::find($borrower->item_id);
 
-        if ($borrower->item_id != $request->item_id) {
-            $this->changeItemStatus($request->item_id);
-            $this->changeItemStatus($borrower->item_id);
+        if ($request->status == 0 && $borrower->status == 1){
+            $book->quantity = $book->quantity + 1;
+        }else if ($request->status == 1 && $borrower->status == 0){
+            $book->quantity = $book->quantity - 1;
         }
+        $book->save();
 
-        if ($request->status != $borrower->status) {
-            $this->changeItemStatus($request->item_id);
-        }
-        $borrower->name = $request->name;
-        $borrower->staff_id = $request->staff_id;
-        $borrower->item_id = $request->item_id;
+
         $borrower->department_id = $request->department_id;
-        $borrower->user_id = $request->user_id;
         $borrower->status = $request->status;
+        $borrower->student_id = $request->student_id;
+
 
         $borrower->save();
         return redirect()->route('borrower')->with(['message' => 'Borrower updated', 'alert' => 'alert-success']);

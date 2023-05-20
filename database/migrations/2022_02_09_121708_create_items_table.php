@@ -21,6 +21,8 @@ class CreateItemsTable extends Migration
             $table->string('author');
             $table->string('price');
             $table->string('image')->nullable();
+            $table->string('pdf')->nullable();
+            $table->integer('quantity')->nullable();
             $table->boolean('status');
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('supplier_id')->constrained()->cascadeOnDelete();

@@ -17,6 +17,8 @@
 
             .book {
                 position: relative;
+                border: 1px solid #f5f5f5;
+                margin: 0 5px;
             }
 
             .favorite {
@@ -24,7 +26,15 @@
                 left: 20px;
                 z-index: 99;
             }
-
+            .online{
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: #0b5ed7;
+                color: #fff;
+                padding: 0 5px;
+                border-radius: 5px;
+            }
             @media (max-width: 767px) {
                 .favorite {
                     left: -20px;
@@ -61,11 +71,14 @@
                                 <img class="object-cover object-center block book_img"
                                      src="{{url('storage/media/books/' . $item->image)}}"
                                      alt="{{$item->image}}">
+                                @if(strlen($item->pdf) > 0)
+                                    <span class="online">Есть в онлайн</span>
+                                @endif
                             </div>
                             <div class="mt-4">
                                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{$item->category}}</h3>
                                 <h2 class="text-gray-900 title-font text-lg font-medium">{{$item->name}}</h2>
-                                <p class="mt-1">{{$item->price}}₸</p>
+                                <p class="mt-1">{{$item->quantity > 0 ? "Есть в наличии" : "Нет в наличии"}}</p>
                             </div>
                         </a>
                     </div>

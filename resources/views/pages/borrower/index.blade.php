@@ -44,7 +44,7 @@
                     <td>{{ $borrower->department->name }}</td>
                     <td>
                         <a href="{{ route('borrower.destroy', ['id' => $borrower->id]) }}"
-                           class="btn btn-danger">Delete</a>
+                           class="btn btn-danger my-2">Delete</a>
                         <a href="{{ route('borrower.showEdit', ['id' => $borrower->id]) }}"
                            class="btn btn-warning">Edit</a>
                     </td>

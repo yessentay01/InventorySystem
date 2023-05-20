@@ -48,12 +48,16 @@ class ItemController extends Controller
             'status' => 'required',
             'category_id' => 'required',
             'supplier_id' => 'required',
+            'quantity' => 'required',
         ]);
         if ($request->image) {
-            $photo_name = time() . "." . $request->image->getClientOriginalExtension();
+            $photo_name = $request->image->hashName();
             $request->image->storeAs('media/books/', $photo_name, 'public');
         }
-
+        if ($request->pdf) {
+            $pdf_name = $request->pdf->hashName();
+            $request->pdf->storeAs('media/books/', $pdf_name, 'public');
+        }
         Item::create([
             'name' => $request->name,
             'serial_number' => $request->serial_number,
@@ -62,6 +66,8 @@ class ItemController extends Controller
             'author' => $request->author,
             'price' => $request->price,
             'image' => $photo_name,
+            'pdf' => $pdf_name,
+            'quantity' => (int)$request->quantity,
             'category_id' => $request->category_id,
             'supplier_id' => $request->supplier_id
         ]);
@@ -105,6 +111,7 @@ class ItemController extends Controller
             'status' => 'required',
             'category_id' => 'required',
             'supplier_id' => 'required',
+            'quantity' => 'required',
         ]);
 
         $item->name = $request->name;
@@ -112,6 +119,7 @@ class ItemController extends Controller
         $item->status = $request->status;
         $item->category_id = $request->category_id;
         $item->supplier_id = $request->supplier_id;
+        $item->quantity = $request->quantity;
         $item->save();
 
         return redirect()->route('item')->with(['message' => 'Book updated', 'alert' => 'alert-warning']);

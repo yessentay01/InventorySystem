@@ -22,6 +22,8 @@ class Item extends Model
         'author',
         'price',
         'image',
+        'quantity',
+        'pdf',
         'category_id',
         'supplier_id',
     ];

@@ -7,18 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body{
+        body {
             font-family: dejavu sans;
         }
-        table{
+
+        table {
             width: 100%;
             border-collapse: collapse;
         }
-        td, th{
-            border:1px solid #000;
+
+        td, th {
+            border: 1px solid #000;
             padding: 5px;
         }
-        .center{
+
+        .center {
             text-align: center;
         }
     </style>
@@ -35,11 +38,13 @@
     </thead>
     <tbody>
     @foreach($borrowers as $borrower)
-        <tr>
-            <td class="px-4 py-3">{{$borrower->user->name}}</td>
-            <td class="px-4 py-3">{{$borrower->item->name }}</td>
-            <td class="px-4 py-3">{{ $borrower->department->name }}</td>
-        </tr>
+        @if($borrower->status == 1)
+            <tr>
+                <td class="px-4 py-3">{{$borrower->user->name}}</td>
+                <td class="px-4 py-3">{{$borrower->item->name }}</td>
+                <td class="px-4 py-3">{{ $borrower->department->name }}</td>
+            </tr>
+        @endif
     @endforeach
     </tbody>
 </table>

@@ -50,15 +50,21 @@
                         @endif
 
                     @endforeach
-                    <h1 class="text-gray-900 text-2xl title-font font-medium my-2"><b>{{$item->name}}</b></h1>
+                    <h1 class="text-gray-900 text-2xl title-font font-medium mt-2"><b>{{$item->name}}</b></h1>
+                    <p class="mb-2"><small>(В наличии {{$item->quantity}} шт)</small></p>
                     <p class="leading-relaxed">{{$item->description}}</p>
-                    <div class="flex">
+
+                    <div class="flex my-2">
                         <span class="title-font font-medium text-2xl text-gray-900">{{$item->price}}₸</span>
-                        <button
-                            class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                            Button
-                        </button>
                     </div>
+                    @if(strlen($item->pdf) > 0)
+                        <a target="_blank" class="btn btn-primary" href="{{url('storage/media/books/' . $item->pdf)}}">Читать
+                            в онлайн</a>
+                    @endif
+                    @if($item->quantity > 0)
+                        <a target="_blank" class="btn btn-primary" href="{{url('storage/media/books/' . $item->pdf)}}">Забронировать
+                            книгу</a>
+                    @endif
                 </div>
             </div>
         </div>

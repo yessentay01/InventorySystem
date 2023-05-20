@@ -19,7 +19,7 @@
                 <th data-field="name" data-sortable="true" scope="col">Name</th>
                 <th data-field="Serial Number" data-sortable="true" scope="col">Serial Number</th>
                 <th data-field="Category" data-sortable="true" scope="col">Category</th>
-                <th data-field="Supplier" data-sortable="true" scope="col">Supplier</th>
+                <th data-field="Quantity" data-sortable="true" scope="col">Quantity</th>
                 <th data-field="Status" data-sortable="true" scope="col">Status</th>
                 <th></th>
             </tr>
@@ -31,7 +31,7 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->serial_number }}</td>
                     <td>{{ $item->category->name ?? 'N/A' }}</td>
-                    <td>{{ $item->supplier->name }}</td>
+                    <td>{{ $item->quantity }}</td>
                     @if ($item->status == '1')
                         <td>
                             <span class="btn bg-success text-white">Available</span>
@@ -40,7 +40,7 @@
                         <td>Unavailable</td>
                     @endif
                     <td>
-                        <a href="{{ route('item.destroy', ['id' => $item->id]) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('item.destroy', ['id' => $item->id]) }}" class="btn btn-danger mb-2">Delete</a>
                         <a href="{{ route('item.showEdit' , ['id' => $item->id]) }}" class="btn btn-warning">Edit</a>
                     </td>
 

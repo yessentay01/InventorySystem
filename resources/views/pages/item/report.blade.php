@@ -31,6 +31,7 @@
         <th class="px-4 py-3">Name</th>
         <th class="px-4 py-3">Serial Number</th>
         <th class="px-4 py-3">Category</th>
+        <th class="px-4 py-3">Quantity</th>
     </tr>
     </thead>
     <tbody>
@@ -39,6 +40,7 @@
             <td class="px-4 py-3">{{$item->name}}</td>
             <td class="px-4 py-3">{{$item->serial_number }}</td>
             <td class="px-4 py-3">{{ $item->category->name }}</td>
+            <td class="px-4 py-3">{{ $item->quantity }}</td>
         </tr>
     @endforeach
     </tbody>

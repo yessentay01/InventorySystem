@@ -14,7 +14,8 @@ class CatalogController extends Controller
     public function index()
     {
         $items = Item::join('categories', 'categories.id', '=', 'items.category_id')
-            ->select('items.id as id', 'items.name as name', 'items.price as price','categories.name as category', 'items.image as image' )
+            ->where('items.status', '=', 1)
+            ->select('items.id as id', 'items.name as name', 'items.price as price','categories.name as category', 'items.image as image' , 'items.quantity as quantity', 'items.pdf as pdf')
             ->orderBy('status', 'DESC')
             ->get();
         $favorites = Favorites::all();
@@ -22,7 +23,7 @@ class CatalogController extends Controller
     }
 
     public function addToFavorites($id){
-        $items = Favorites::where('item_id', '=', $id)->get();
+        $items = Favorites::where('item_id', '=', $id)->where('user_id', '=', auth()->user()->id)->get();
         if(count($items) > 0){
             foreach ($items as $item){
                 DB::table('favorites')->delete($item->id);
@@ -44,7 +45,8 @@ class CatalogController extends Controller
             ->join('favorites', 'items.id', '=', 'favorites.item_id')
             ->join('categories', 'categories.id', '=', 'items.category_id')
             ->where('favorites.user_id' , '=', auth()->user()->id)
-            ->select('items.id as id', 'items.name as name', 'items.price as price','categories.name as category', 'items.image as image' )
+            ->where('items.status', '=', 1)
+            ->select('items.id as id', 'items.name as name', 'items.price as price','categories.name as category', 'items.image as image', 'items.quantity as quantity', 'items.pdf as pdf')
             ->get();
         return view('pages.favorites.index', compact('items', 'favorites'));
     }

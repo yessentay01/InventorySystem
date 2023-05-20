@@ -13,7 +13,7 @@
                     <label for="user_id"  class="form-label">Borrower Name</label>
                     <select name="user_id" class="form-control" id="user_id">
                         @foreach($users as $user)
-                            <option value="{{$user->id}}" {{ $user->id == $borrower->user_id ? 'selected' :
+                            <option disabled value="{{$user->id}}" {{ $user->id == $borrower->user_id ? 'selected' :
                         ''}}>{{$user->name}}</option>
                         @endforeach
                     </select>
@@ -50,7 +50,7 @@
                         $borrower->item->name }}</option>
                         @else
                             @foreach ($items as $item)
-                                <option value="{{ $item->id }}" {{ $item->id == $borrower->item_id ? 'selected' : ''}} >{{
+                                <option disabled value="{{ $item->id }}" {{ $item->id == $borrower->item_id ? 'selected' : ''}} >{{
                         $item->name }}</option>
                             @endforeach
                             <option value="{{ $borrower->item_id }}" selected>{{

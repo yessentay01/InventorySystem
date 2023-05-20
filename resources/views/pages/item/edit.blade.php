@@ -51,7 +51,16 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="text" name="quantity" class="form-control" id="quantity" value="{{ $item->quantity }}" required>
 
+                    @error('quantity')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                    @enderror
+                </div>
                 <div class="mb-3">
                     <label for="serial_number" class="form-label">Book ID</label>
                     <input type="text" name="serial_number" class="form-control" id="serial_number"

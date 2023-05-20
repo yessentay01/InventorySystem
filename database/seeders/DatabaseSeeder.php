@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Department;
 use App\Models\Item;
 use App\Models\Supplier;
+use App\Models\Universities;
 use Database\Factories\BorrowerFactory;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->getDepartments();
         $this->getCategories();
+        $this->getUniversities();
     }
 
     public function getCategories()
@@ -40,6 +42,15 @@ class DatabaseSeeder extends Seeder
 
         foreach ($departments as $department) {
             Department::firstOrCreate($department);
+        }
+    }
+    public function getUniversities()
+    {
+        $universitiesJson = file_get_contents(database_path() . '/universities.json');
+        $universities = json_decode($universitiesJson, true)['universities'];
+
+        foreach ($universities as $university) {
+            Universities::firstOrCreate($university);
         }
     }
 }

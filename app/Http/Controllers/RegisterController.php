@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Universities;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class RegisterController extends Controller
 
     public function index()
     {
-        return view('pages.register');
+        $universities = Universities::all();
+        return view('pages.register', compact('universities'));
+
     }
 
     public function register(Request $request)
@@ -26,12 +29,14 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
+            'university_id' =>'required'
         ]);
 
         event(new Registered($user = User::create([
             'email' => $request->email,
             'name' => $request->name,
             'password' => Hash::make($request->password),
+            'university_id' => $request->university_id
         ])));
 
         Auth::login($user);

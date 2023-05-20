@@ -25,6 +25,19 @@
                     </span>
             @enderror
         </div>
+        <div class="form-outline mb-4">
+            <label class="form-label" >University</label>
+            <select name="university_id" id="university_id" class="form-control form-control-lg @error('university_id') is-invalid @enderror" required>
+                @foreach($universities as $university)
+                    <option value="{{$university->id}}" {{old('university_id') == $university->id ? 'selected' : ''}}>{{$university->name}}</option>
+                @endforeach
+            </select>
+            @error('university_id')
+            <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+            @enderror
+        </div>
 
         <div class="form-outline mb-3">
             <label class="form-label">Password</label>
