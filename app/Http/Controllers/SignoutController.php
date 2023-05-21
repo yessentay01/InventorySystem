@@ -13,6 +13,6 @@ class SignoutController extends Controller
         Session::flush();
         Auth::logout();
 
-        return Redirect(route('index'));
+        return Redirect(route('welcome'));
     }
 }
