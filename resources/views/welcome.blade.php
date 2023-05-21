@@ -15,10 +15,32 @@
     <link rel="stylesheet" type="text/css" href="{{asset('welcome/css/font-awesome.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('welcome/css/style.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('welcome/css/responsive.css')}}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/686ef0aebd.js" crossorigin="anonymous"></script>
+
     <style>
         html {
             scroll-behavior: smooth;
         }
+        .social a{
+            box-sizing: border-box;
+            margin: 0 15px;
+            color: #fff;
+        }
+        .social a i{
+            font-size: 24px;
+            color: #fff;
+        }
+        .footer_link{
+            display: block;
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer_link:hover{
+            color: #fff;
+            text-decoration: none;
+        }
+
     </style>
 </head>
 
@@ -30,7 +52,7 @@
             <nav class="navbar navbar-expand-lg custom_nav-container ">
                 <a class="navbar-brand" href="{{route('index')}}">
             <span>
-              Library IMS
+        IITU Library
             </span>
                 </a>
 
@@ -46,15 +68,18 @@
                             <a class="nav-link" href="#categories">Categories</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="#accordion"> FAQ </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#blog"> Blog </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Contact Us</a>
                         </li>
                         @auth
-                            <li  class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Home</a></li>
+                            <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Home</a></li>
                         @else
-                            <li class="nav-item"> <a href="{{ route('index') }}" class="nav-link">Log in</a></li>
+                            <li class="nav-item"><a href="{{ route('index') }}" class="nav-link">Log in</a></li>
                         @endauth
                     </ul>
                 </div>
@@ -69,98 +94,33 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="detail-box">
-                                    <h5>
-                                        Library IMS
-                                    </h5>
+                                    <h2>
+                                        IITU Library
+                                    </h2>
                                     <h1>
-                                        For All Your <br>
-                                        Reading Needs
+                                        International IT University
                                     </h1>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe
-                                        dolorem deserunt quo quidem ad optio.
+                                        The library of the International University of Information Technologies was
+                                        organized in 2009 as a structural unit of the university. The library's fund
+                                        consists of educational, methodical and scientific literature on traditional and
+                                        electronic media in three languages: Kazakh, Russian and English.
+
+                                        The library's mission is TO READ, STUDY, AND EXPLORE.
                                     </p>
                                     <a href="">
-                                        Read More
+                                        Log in
                                     </a>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="img-box">
-                                    <img src="{{asset('welcome/images/slider-img.png')}}" alt="">
+                                    <img src="{{asset('images/iitu-logo.png')}}" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="container ">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="detail-box">
-                                    <h5>
-                                        Library IMS
-                                    </h5>
-                                    <h1>
-                                        For All Your <br>
-                                        Reading Needs
-                                    </h1>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe
-                                        dolorem deserunt quo quidem ad optio.
-                                    </p>
-                                    <a href="">
-                                        Read More
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="img-box">
-                                    <img src="{{asset('welcome/images/slider-img.png')}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container ">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="detail-box">
-                                    <h5>
-                                        Library IMS
-                                    </h5>
-                                    <h1>
-                                        For All Your <br>
-                                        Reading Needs
-                                    </h1>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe
-                                        dolorem deserunt quo quidem ad optio.
-                                    </p>
-                                    <a href="">
-                                        Read More
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="img-box">
-                                    <img src="{{asset('welcome/images/slider-img.png')}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel_btn_box">
-                <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
         </div>
     </section>
@@ -174,31 +134,26 @@
                 <h2>
                     Books Categories
                 </h2>
-                <p>
-                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                    alteration
-                </p>
             </div>
             <div class="row">
                 @foreach($categories as $category)
-                <div class="col-sm-6 col-md-4 ">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="{{asset('welcome/images/cat1.png')}}" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                {{$category->name}}
-                            </h5>
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="{{asset('welcome/images/cat1.png')}}" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    {{$category->name}}
+                                </h5>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
     </div>
 </section>
-
 
 <section class="about_section layout_padding">
     <div class="container ">
@@ -212,7 +167,7 @@
                 <div class="detail-box">
                     <div class="heading_container">
                         <h2>
-                            About Our     Library IMS
+                            About Our Library IMS
                         </h2>
                     </div>
                     <p>
@@ -230,6 +185,20 @@
     </div>
 </section>
 
+<section id="accordion" class="catagory_section layout_padding">
+    <div class="catagory_container">
+        <div class="container ">
+            <div class="heading_container heading_center mb-4">
+                <h2>
+                    Frequently asked questions
+                </h2>
+            </div>
+            @include('components/welcome/accordion')
+        </div>
+
+    </div>
+
+</section>
 
 <section id="blog" class="blog_section layout_padding">
     <div class="container">
@@ -242,21 +211,32 @@
             <div class="col-md-6">
                 <div class="box">
                     <div class="img-box">
-                        <img src="{{asset('welcome/images/b1.jpg')}}" alt="">
+                        <img src="{{asset('images/blog1.jpg')}}" alt="">
                         <h4 class="blog_date">
                 <span>
-                  19 January 2021
+                   14 February 2019
                 </span>
                         </h4>
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Eius, dolor? Vel velit sed doloremque
+                            Robocon 2019
                         </h5>
                         <p>
-                            Incidunt magni explicabo ullam ipsa quo consequuntur eveniet illo? Aspernatur nam dolorem a
-                            neque? Esse eaque dolores hic debitis cupiditate, ad beatae voluptatem numquam dignissimos
-                            ab porro
+                            The Robotics Championship among students was held for the first time in 2019 at the Halyk
+                            Arena Ice Palace with the participation of 15 teams from all over Kazakhstan.
+                            General sponsor: Foundation of the First President of the Republic of Kazakhstan – Elbasy.
+                            Additional sponsor: Halyk bank
+                            The aim of the project is to obtain modern technical knowledge by the youth of Kazakhstan
+                            for
+                            the further implementation of their startup projects and active participation in the
+                            innovation activities of Kazakhstan.
+                            Project Description: The IITU Robocon Championship is a competition between robotics teams
+                            based on the Arduino platform. It gives young scientists the opportunity to start developing
+                            robots "from scratch", starting with design and mechanics, then electronics and ending with
+                            writing a robot intelligence program, i.e. a participant in the championship is a ready-made
+                            young specialist suitable for the position of junior laboratory assistant in any scientific
+                            institute engaged in science in the field of IT, electronics and robotics.
                         </p>
                         <a href="">
                             Read More
@@ -267,21 +247,28 @@
             <div class="col-md-6">
                 <div class="box">
                     <div class="img-box">
-                        <img src="{{asset('welcome/images/b2.jpg')}}" alt="">
+                        <img src="{{asset('images/blog2.jpg')}}" alt="">
                         <h4 class="blog_date">
                 <span>
-                  19 January 2021
+                    19 May 2019
                 </span>
                         </h4>
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Minus aliquid alias porro iure fuga
+                            HackDay 2019
                         </h5>
                         <p>
-                            Officiis veritatis id illo eligendi repellat facilis animi adipisci praesentium. Tempore ab
-                            provident porro illo ex obcaecati deleniti enim sequi voluptas at. Harum veniam eos nisi
-                            distinctio! Porro, reiciendis eius.
+                            HackDay is an event where participants work on bringing their ideas to a prototype.
+                            Participation in HackDay is an opportunity for two days in a powerful creative environment
+                            to implement a project for which there was no time, assemble a team or fit into an
+                            interesting project. Participants can come with a ready-made idea for implementation, or
+                            they can assemble a team directly on this day.
+
+                            History of creation: The HackDay format was developed by Yahoo! in 2005, to implement
+                            creative ideas of employees, and to present prototypes to a top manager. Yahoo Hack Day is a
+                            regular event that the company arranges for developers in different countries of the world
+                            to demonstrate their achievements and attract talents to cooperation.
                         </p>
                         <a href="">
                             Read More
@@ -294,8 +281,7 @@
 </section>
 
 
-
-<section id="contact"  class="contact_section layout_padding">
+<section id="contact" class="contact_section layout_padding">
     <div class="container">
         <div class="row">
             <div class="col-md-6 ">
@@ -326,7 +312,7 @@
             </div>
             <div class="col-md-6">
                 <div class="img-box">
-                    <img src="{{asset('welcome/images/contact-img.png')}}" alt="">
+                    <img src="{{asset('images/contact.jpg')}}" alt="">
                 </div>
             </div>
         </div>
@@ -343,11 +329,13 @@
             <div class="col-md-6 col-lg-3 info-col">
                 <div class="info_detail">
                     <h4>
-                        About Us
+                        Quick links
                     </h4>
                     <p>
-                        Vitae aut explicabo fugit facere alias distinctio, exem commodi mollitia minusem dignissimos
-                        atque asperiores incidunt vel voluptate iste
+                        <a class="footer_link" href="#categories">Categories</a>
+                        <a class="footer_link" href="#accordion"> FAQ </a>
+                        <a class="footer_link"  href="#blog"> Blog </a>
+                        <a class="footer_link"  href="#contact">Contact Us</a>
                     </p>
                 </div>
             </div>
@@ -381,21 +369,26 @@
             <div class="col-md-6 col-lg-3 info-col">
                 <div class="info_contact">
                     <h4>
-                        Newsletter
+                        Social media
                     </h4>
-                    <form action="#">
-                        <input type="text" placeholder="Enter email"/>
-                        <button type="submit">
-                            Subscribe
-                        </button>
-                    </form>
+
+                    <div class="social">
+                        <a href="https://www.instagram.com/iitu_kz" target="_blank">
+                                <i class="fab fa-instagram"></i></a>
+
+                            <a href="https://www.facebook.com/pages/International%20Information%20Technology%20University/455162331170935/"
+                               target="_blank">
+                                <i class="fab fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@IITUAlmaty" target="_blank">
+                                <i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
+
             </div>
 
         </div>
     </div>
 </section>
-
 
 
 <script src="{{asset('welcome/js/jquery-3.4.1.min.js')}}"></script>
