@@ -20,6 +20,7 @@
                 <input type="email" class="form-control" value="{{ $university->name }}" disabled>
             </div>
         </div>
+        @if(!auth()->user()->is_admin)
         <table
             id="table"
             data-show-columns="true"
@@ -53,6 +54,7 @@
             @endforeach
             </tbody>
         </table>
+        @endif
     </div>
     <script>
         $(function () {

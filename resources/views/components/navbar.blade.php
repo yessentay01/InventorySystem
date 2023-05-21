@@ -14,10 +14,12 @@
                 <i class='bx bx-bookmark nav_icon'></i>
                 <span class="nav_name">Catalog</span>
             </a>
+            @if(!auth()->user()->is_admin)
             <a href="{{ route('favorites') }}" class="nav_link {{Route::currentRouteName() == 'favorites' ? 'active' : null  }}">
                 <i class='bx bx-folder nav_icon'></i>
                 <span class="nav_name">Favorites</span>
             </a>
+            @endif
             <a href="{{ route('profile') }}" class="nav_link {{Route::currentRouteName() == 'profile' ? 'active' : null  }}">
                 <i class='bx bx-user  nav_icon'></i>
                 <span class="nav_name">Profile</span>

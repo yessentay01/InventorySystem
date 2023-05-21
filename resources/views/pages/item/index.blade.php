@@ -40,8 +40,8 @@
                         <td>Unavailable</td>
                     @endif
                     <td>
-                        <a href="{{ route('item.destroy', ['id' => $item->id]) }}" class="btn btn-danger mb-2">Delete</a>
-                        <a href="{{ route('item.showEdit' , ['id' => $item->id]) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('item.destroy', ['id' => $item->id]) }}" class="btn btn-primary mb-2">Delete</a>
+                        <a href="{{ route('item.showEdit' , ['id' => $item->id]) }}" class="btn btn-primary mb-2">Edit</a>
                     </td>
 
                 </tr>

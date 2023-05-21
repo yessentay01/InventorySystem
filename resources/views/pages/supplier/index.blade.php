@@ -15,8 +15,8 @@
             <thead>
             <tr>
                 <th  data-field="id" data-sortable="true" scope="col">#</th>
-                <th  data-field="Brand Name" data-sortable="true" scope="col">Brand Name</th>
-                <th  data-field="Person in charge" data-sortable="true" scope="col">Person in charge</th>
+                <th  data-field="Brand Name" data-sortable="true" scope="col">Name</th>
+                <th  data-field="Person in charge" data-sortable="true" scope="col">Person</th>
                 <th  data-field="Contact" data-sortable="true" scope="col">Contact</th>
                 <th></th>
             </tr>
@@ -30,9 +30,9 @@
                     <td>{{ $supplier->contact_number }}</td>
                     <td>
                         <a href="{{ route('supplier.destroy', ['id'=>$supplier->id]) }}"
-                           class="btn btn-danger">Delete</a>
+                           class="btn btn-primary">Delete</a>
                         <a href="{{ route('supplier.showEdit', ['id'=>$supplier->id]) }}"
-                           class="btn btn-warning">Edit</a>
+                           class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
             @endforeach

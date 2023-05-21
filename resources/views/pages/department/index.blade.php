@@ -29,9 +29,9 @@
                     <td>{{ $department->location }}</td>
                     <td>
                         <a href="{{ route('department.destroy', ['id' => $department->id]) }}"
-                           class="btn btn-danger">Delete</a>
+                           class="btn btn-primary">Delete</a>
                         <a href="{{ route('department.showEdit', ['id' => $department->id]) }}"
-                           class="btn btn-warning">Edit</a>
+                           class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
             @endforeach

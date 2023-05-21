@@ -31,7 +31,7 @@ class BorrowerController extends Controller
         if (!auth()->user()->is_admin){
             return redirect()->route('dashboard');
         }
-        $users = User::all();
+        $users = User::where('is_admin', '=', null)->orwhere('is_admin', '=', 0)->get();
         $departments = Department::all();
         $items = Item::where('status', 1)->where('quantity', '>', 0)->get();
         return view('pages.borrower.add', compact('departments', 'items', 'users'));

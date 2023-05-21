@@ -27,7 +27,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard')->with(['message' => 'Login successful', 'alert' => 'alert-success']);
+            return redirect()->route('catalog')->with(['message' => 'Login successful', 'alert' => 'alert-success']);
         }
 
         return redirect()->route('index')->with(['message' => 'Failed login', 'alert' => 'alert-danger']);

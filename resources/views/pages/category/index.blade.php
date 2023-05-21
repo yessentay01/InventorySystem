@@ -26,9 +26,9 @@
                     <td>{{ $category->name }}</td>
                     <td>
                         <a href="{{ route('category.destroy', ['id'=>$category->id]) }}"
-                           class="btn btn-danger">Delete</a>
+                           class="btn btn-primary">Delete</a>
                         <a href="{{ route('category.showEdit', ['id'=> $category->id]) }}"
-                           class="btn btn-warning">Edit</a>
+                           class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
             @endforeach
