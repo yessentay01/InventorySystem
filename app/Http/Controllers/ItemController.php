@@ -58,6 +58,9 @@ class ItemController extends Controller
             $pdf_name = $request->pdf->hashName();
             $request->pdf->storeAs('media/books/', $pdf_name, 'public');
         }
+        if (!isset($pdf_name)){
+            $pdf_name = "";
+        }
         Item::create([
             'name' => $request->name,
             'serial_number' => $request->serial_number,
