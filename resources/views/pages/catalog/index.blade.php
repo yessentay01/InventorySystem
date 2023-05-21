@@ -20,7 +20,6 @@
             .book {
                 position: relative;
                 border: 1px solid #f5f5f5;
-                margin: 0 5px;
             }
 
             .favorite {
