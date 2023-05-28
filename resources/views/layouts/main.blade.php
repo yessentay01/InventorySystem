@@ -32,7 +32,7 @@
 
 </head>
 <body id="body-pd">
-<header class="header mb-3" id="header">
+<header class="header mb-3 bg-gray-100" id="header">
     <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
     <h4>@yield('title')</h4>
 </header>

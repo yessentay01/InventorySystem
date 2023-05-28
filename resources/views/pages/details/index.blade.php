@@ -37,6 +37,22 @@
 
     <section class="text-gray-600 body-font overflow-hidden">
         <div class=" px-5 py-24 mx-auto">
+            <nav
+                class="w-full rounded-md bg-gray-100 px-4 py-3 my-4 dark:bg-neutral-600">
+                <ol class="list-reset flex">
+                    <li>
+                        <a
+                            href="{{route('catalog')}}"
+                            class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                        >Library</a
+                        >
+                    </li>
+                    <li>
+                        <span class="mx-2 text-neutral-500 dark:text-neutral-300">/</span>
+                    </li>
+                    <li class="text-neutral-500 dark:text-neutral-300">{{$item->name}}</li>
+                </ol>
+            </nav>
             <div class="mx-auto flex flex-wrap">
                 <div class="book_container">
                     <img class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded book_img"
