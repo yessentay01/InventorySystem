@@ -13,11 +13,22 @@ class CatalogController extends Controller
 {
     public function index()
     {
-        $items = Item::join('categories', 'categories.id', '=', 'items.category_id')
-            ->where('items.status', '=', 1)
-            ->select('items.id as id', 'items.name as name', 'items.price as price','categories.name as category', 'items.image as image' , 'items.quantity as quantity', 'items.pdf as pdf')
-            ->orderBy('status', 'DESC')
-            ->get();
+        if (request('search')) {
+            $items = Item::join('categories', 'categories.id', '=', 'items.category_id')
+                ->where('items.status', '=', 1)
+                ->where('items.name', 'like', '%' . request('search') . '%')
+                ->select('items.id as id', 'items.name as name', 'items.price as price','categories.name as category', 'items.image as image' , 'items.quantity as quantity', 'items.pdf as pdf')
+                ->orderBy('status', 'DESC')
+                ->get();
+        } else {
+            $items = Item::join('categories', 'categories.id', '=', 'items.category_id')
+                ->where('items.status', '=', 1)
+                ->select('items.id as id', 'items.name as name', 'items.price as price','categories.name as category', 'items.image as image' , 'items.quantity as quantity', 'items.pdf as pdf')
+                ->orderBy('status', 'DESC')
+                ->get();
+        }
+
+
         $favorites = Favorites::all();
         return view('pages.catalog.index', compact('items', 'favorites'));
     }

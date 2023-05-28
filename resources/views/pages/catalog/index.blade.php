@@ -14,9 +14,11 @@
                 margin: auto;
                 height: 300px;
             }
-            .book_img_container{
+
+            .book_img_container {
                 position: relative;
             }
+
             .book {
                 position: relative;
                 border: 1px solid #f5f5f5;
@@ -27,7 +29,8 @@
                 left: 20px;
                 z-index: 99;
             }
-            .online{
+
+            .online {
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -36,6 +39,7 @@
                 padding: 0 5px;
                 border-radius: 5px;
             }
+
             @media (max-width: 767px) {
                 .favorite {
                     left: -20px;
@@ -47,6 +51,17 @@
     <section class="text-gray-600 body-font">
 
         <div class="px-5 py-24 mx-auto">
+            <form>
+                <input
+                    type="search"
+                    class="form-control my-4"
+                    placeholder="Search"
+                    name="search"
+                    value="{{ request('search') }}"
+                    onchange=""
+                >
+            <input type="submit" hidden />
+            </form>
             <div class="flex flex-wrap -m-4">
                 @foreach($items as $item)
                     <div class="lg:w-1/4 md:w-1/2 p-4 w-full book">
@@ -73,7 +88,7 @@
                                      src="{{url('storage/media/books/' . $item->image)}}"
                                      alt="{{$item->image}}">
                                 @if(strlen($item->pdf) > 0)
-                                <span class="online">Есть в онлайн</span>
+                                    <span class="online">Есть в онлайн</span>
                                 @endif
                             </div>
                             <div class="mt-4">
