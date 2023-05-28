@@ -73,20 +73,24 @@
                     <div class="flex my-2">
                         <span class="title-font font-medium text-2xl text-gray-900">{{$item->price}}₸</span>
                     </div>
-                    @if(strlen($item->pdf) > 0)
-                        <a target="_blank" class="btn btn-primary" href="{{url('storage/media/books/' . $item->pdf)}}">Читать
-                            в онлайн</a>
-                    @endif
-                    @if($item->quantity > 0 && auth()->user()->university_id == 1)
+                    <div class="flex gap-2">
+                        @if(strlen($item->pdf) > 0)
+                            <a target="_blank" class="btn btn-primary"
+                               href="{{url('storage/media/books/' . $item->pdf)}}">Читать
+                                в онлайн</a>
+                        @endif
+                        @if($item->quantity > 0 && auth()->user()->university_id == 1)
                             <form action="{{route('booking.store')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="item_id" value="{{$item->id}}">
                                 <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                 <button type="submit" class="btn btn-primary">Забронировать
-                                    книгу</button>
+                                    книгу
+                                </button>
                             </form>
 
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
