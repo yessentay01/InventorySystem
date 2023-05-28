@@ -77,9 +77,15 @@
                         <a target="_blank" class="btn btn-primary" href="{{url('storage/media/books/' . $item->pdf)}}">Читать
                             в онлайн</a>
                     @endif
-                    @if($item->quantity > 0)
-                        <a target="_blank" class="btn btn-primary" href="{{url('storage/media/books/' . $item->pdf)}}">Забронировать
-                            книгу</a>
+                    @if($item->quantity > 0 && auth()->user()->university_id == 1)
+                            <form action="{{route('booking.store')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="item_id" value="{{$item->id}}">
+                                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                                <button type="submit" class="btn btn-primary">Забронировать
+                                    книгу</button>
+                            </form>
+
                     @endif
                 </div>
             </div>

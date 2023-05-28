@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('welcome/css/responsive.css')}}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/686ef0aebd.js" crossorigin="anonymous"></script>
-
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-black.svg')}}">
     <style>
         html {
             scroll-behavior: smooth;
@@ -108,7 +108,7 @@
 
                                         The library's mission is TO READ, STUDY, AND EXPLORE.
                                     </p>
-                                    <a href="">
+                                    <a href="{{route('index')}}">
                                         Log in
                                     </a>
                                 </div>

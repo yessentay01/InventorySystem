@@ -14,7 +14,7 @@
     <link href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css" rel="stylesheet">
     <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
-
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-black.svg')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <style>
         .card-view{

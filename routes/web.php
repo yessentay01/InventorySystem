@@ -13,6 +13,7 @@ use App\Http\Controllers\SignoutController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +54,11 @@ Route::middleware('auth')->group(function () {
 
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    //Booking
+    Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+    Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+    Route::get('/{id}/delete', [BookingController::class, 'destroy'])->name('booking.destroy');
 
     // Item
     Route::controller(ItemController::class)->prefix('item')->name('item')->group(function () {

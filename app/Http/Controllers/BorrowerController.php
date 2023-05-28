@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Borrower;
 use App\Models\Department;
 use App\Models\Item;
@@ -63,7 +64,11 @@ class BorrowerController extends Controller
             'user_id' => $request->user_id,
             'status' => 1,
         ]);
-
+        $booking = Booking::where('item_id', '=', $request->item_id)
+            ->where('user_id', '=', $request->user_id)->get();
+        if (count($booking) > 0){
+            $booking[0]->delete();
+        }
         $book = Item::find($request->item_id);
         $book->quantity = $book->quantity - 1;
         $book->save();
