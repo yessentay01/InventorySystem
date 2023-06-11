@@ -51,6 +51,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
                 <a class="navbar-brand" href="{{route('index')}}">
+                    <img width="45" src="{{asset('images/iitu-logo2.png')}}" alt="">
             <span>
         IITU Library
             </span>
@@ -157,28 +158,35 @@
 
 <section class="about_section layout_padding">
     <div class="container ">
+        <div class="heading_container heading_center mb-6">
+            <h2>
+                About Our Library
+            </h2>
+        </div>
+        <br>
         <div class="row">
             <div class="col-md-6">
                 <div class="img-box">
-                    <img src="{{asset('welcome/images/about-img.png')}}" alt="">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5hGjCc0I3qQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="detail-box">
-                    <div class="heading_container">
-                        <h2>
-                            About Our Library IMS
-                        </h2>
-                    </div>
-                    <p>
-                        At cumque tenetur iste molestiae, vel eum reiciendis assumenda! Numquam, repudiandae.
-                        Consequuntur obcaecati recusandae aliquam, amet doloribus eius dolores officiis cumque?
-                        Quibusdam praesentium pariatur sapiente mollitia, amet hic iusto voluptas! Iusto quo earum vitae
-                        excepturi, ipsam aliquid deleniti assumenda culpa deserunt.
-                    </p>
-                    <a href="">
-                        Read More
-                    </a>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/s76uWEr5Ybk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+{{--                    <div class="heading_container">--}}
+{{--                        <h2>--}}
+{{--                            About Our Library IMS--}}
+{{--                        </h2>--}}
+{{--                    </div>--}}
+{{--                    <p>--}}
+{{--                        At cumque tenetur iste molestiae, vel eum reiciendis assumenda! Numquam, repudiandae.--}}
+{{--                        Consequuntur obcaecati recusandae aliquam, amet doloribus eius dolores officiis cumque?--}}
+{{--                        Quibusdam praesentium pariatur sapiente mollitia, amet hic iusto voluptas! Iusto quo earum vitae--}}
+{{--                        excepturi, ipsam aliquid deleniti assumenda culpa deserunt.--}}
+{{--                    </p>--}}
+{{--                    <a href="">--}}
+{{--                        Read More--}}
+{{--                    </a>--}}
                 </div>
             </div>
         </div>
@@ -284,44 +292,41 @@
 <section id="contact" class="contact_section layout_padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6">
                 <div class="heading_container ">
                     <h2 class="">
-                        Contact Us
+                        You didn't find what you were looking for?
                     </h2>
+                    <p style="font-size: 22px; margin: 0">Ask a librarian.</p>
+                    <p style="font-size: 22px; margin: 0">We also welcome feedback.</p>
                 </div>
-                <form action="#">
+            </div>
+            <div class="col-md-6">
+                <form action="{{route('feedback')}}" method="POST">
+                    @csrf
                     <div>
-                        <input type="text" placeholder="Name"/>
+                        <input type="text" name="name" placeholder="Name" required/>
                     </div>
                     <div>
-                        <input type="email" placeholder="Email"/>
+                        <input type="email" name="email" placeholder="Email" required/>
                     </div>
                     <div>
-                        <input type="text" placeholder="Pone Number"/>
+                        <input type="text" name="phone" placeholder="Pone Number" required/>
                     </div>
                     <div>
-                        <input type="text" class="message-box" placeholder="Message"/>
+                        <input type="text" name="message" class="message-box" placeholder="Message" required/>
                     </div>
                     <div class="btn-box">
-                        <button>
+                        <button type="submit">
                             SEND
                         </button>
                     </div>
                 </form>
             </div>
-            <div class="col-md-6">
-                <div class="img-box">
-                    <img src="{{asset('images/contact.jpg')}}" alt="">
-                </div>
-            </div>
         </div>
     </div>
 </section>
 
-<!-- end contact section -->
-
-<!-- info section -->
 
 <section class="info_section layout_padding2">
     <div class="container">
@@ -389,7 +394,13 @@
         </div>
     </div>
 </section>
-
+<script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
+</script>
 
 <script src="{{asset('welcome/js/jquery-3.4.1.min.js')}}"></script>
 <script src="{{asset('welcome/js/bootstrap.js')}}"></script>

@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\SignoutController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CatalogController;
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::post('/feedback', [WelcomeController::class, 'feedback'])->name('feedback');
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('index');
@@ -46,6 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/catalog/favorites/{id}', [CatalogController::class , 'addToFavorites'])->name('catalog.favorites');
 
     Route::get('/favorites', [CatalogController::class, 'favorites'])->name('favorites');
+
+    Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedbackView');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
@@ -111,4 +115,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}/edit', 'showEdit')->name('.showEdit');
         Route::post('/{id}/edit', 'update')->name('.update');
     });
+
+
+
 });
