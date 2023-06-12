@@ -71,7 +71,9 @@
                     <p class="leading-relaxed">{{$item->description}}</p>
 
                     <div class="flex my-2">
-                        <span class="title-font font-medium text-2xl text-gray-900">{{$item->price}}₸</span>
+                        @if(auth()->user()->is_admin)
+                            <span class="title-font font-medium text-2xl text-gray-900">{{$item->price}}₸</span>
+                        @endif
                     </div>
                     <div class="flex gap-2">
                         @if(strlen($item->pdf) > 0)

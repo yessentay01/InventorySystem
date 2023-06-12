@@ -311,7 +311,7 @@
                         <input type="email" name="email" placeholder="Email" required/>
                     </div>
                     <div>
-                        <input type="text" name="phone" placeholder="Pone Number" required/>
+                        <input type="hidden" name="phone" placeholder="Pone Number" value="null" required/>
                     </div>
                     <div>
                         <input type="text" name="message" class="message-box" placeholder="Message" required/>
